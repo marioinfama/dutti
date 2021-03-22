@@ -5,14 +5,19 @@
             <!-- <label for="username">First name</label> -->
             <input 
                 type="text"
-                name="first_name"
+                name="firstName"
                 class="form-control"
                 placeholder="First Name"
-                formControlName="first_name"/>
+                formControlName="firstName"/>
                 <hr class="hr-line">
-                <div class="input-group-append form__required" *ngIf="registerForm.get('first_name').invalid">
+                <div class="input-group-append form__required" *ngIf="registerFormControl.firstName.touched && registerFormControl.firstName.errors?.required">
                     <span class="colorInvalid">
-                        <i>FirstName is required</i>
+                        <i>First Name is required</i>
+                    </span>
+                </div>
+                <div class="input-group-append form__required" *ngIf="registerFormControl.firstName.touched && registerFormControl.firstName.errors?.minlength">
+                    <span class="colorInvalid">
+                        <i>minlength 3</i>
                     </span>
                 </div>  
         </div>
@@ -20,14 +25,19 @@
             <!-- <label for="username">Last name</label> -->
             <input
                 type="text"
-                name="last_name"
+                name="lastName"
                 class="form-control"
                 placeholder="Last Name"
-                formControlName="last_name"/>
+                formControlName="lastName"/>
                 <hr class="hr-line">
-                <div class="input-group-append form__required" *ngIf="registerForm.get('last_name').invalid">
+                <div class="input-group-append form__required" *ngIf="registerFormControl.lastName.touched && registerFormControl.lastName.errors?.required">
                     <span class="colorInvalid">
-                        <i>LastName is required</i>
+                        <i>Last Name is required</i>
+                    </span>
+                </div>
+                <div class="input-group-append form__required" *ngIf="registerFormControl.lastName.touched && registerFormControl.lastName.errors?.minlength">
+                    <span class="colorInvalid">
+                        <i>minlength 3</i>
                     </span>
                 </div>
         </div>
@@ -40,13 +50,18 @@
                 placeholder="Username"
                 formControlName="username"/>
                 <hr class="hr-line">
-                <div class="input-group-append form__required" *ngIf="registerForm.get('username').invalid">
+                <div class="input-group-append form__required" *ngIf="registerFormControl.username.touched && registerFormControl.username.errors?.required">
                     <span class="colorInvalid">
                         <i>Username is required</i>
                     </span>
                 </div>
+                <div class="input-group-append form__required" *ngIf="registerFormControl.username.touched && registerFormControl.username.errors?.minlength">
+                    <span class="colorInvalid">
+                        <i>minlength 3</i>
+                    </span>
+                </div>
         </div>
-        <div class="form-group mt-5" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+        <div class="form-group mt-5" ng-class="{ 'has-error': form.email.$dirty && form.email.$error.required }">
             <!-- <label for="password">Password</label> -->
             <input
                 type="email"
@@ -55,12 +70,62 @@
                 placeholder="email"
                 formControlName="email" />
                 <hr class="hr-line">
-                <div class="input-group-append form__required" *ngIf="registerForm.get('email').invalid">
+                <div class="input-group-append form__required" *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.required">
                     <span class="colorInvalid">
                         <i>Email is required</i>
                     </span>
                 </div>
+                <div class="input-group-append form__required" *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.minlength">
+                    <span class="colorInvalid">
+                        <i>minlength 6</i>
+                    </span>
+                </div>
+                <div class="input-group-append form__required" *ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.email">
+                    <span class="colorInvalid">
+                        <i>incorrect email format</i>
+                    </span>
+                </div>
         </div>
+
+        <div class="form-group mt-5" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="Password"
+                formControlName="password" />
+                <hr class="hr-line">
+                <div class="input-group-append form__required" *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.required">
+                    <span class="colorInvalid">
+                        <i>Password is required</i>
+                    </span>
+                </div>
+                <div class="input-group-append form__required" *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.minlength">
+                    <span class="colorInvalid">
+                        <i>minlength 8</i>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group mt-5" ng-class="{ 'has-error': form.confirmPassword.$dirty && form.confirmPassword.$error.required }">
+            <input
+                type="password"
+                name="confirmPassword"
+                class="form-control"
+                placeholder="Confirm Password"
+                formControlName="confirmPassword" />
+                <hr class="hr-line">
+                <div class="input-group-append form__required" *ngIf="registerFormControl.confirmPassword.touched && registerFormControl.confirmPassword.errors?.required">
+                    <span class="colorInvalid">
+                        <i>confirmPassword is required</i>
+                    </span>
+                </div>
+                <div class="input-group-append form__required" *ngIf="registerFormControl.confirmPassword.touched && registerFormControl.confirmPassword.errors?.passwordMismatch">
+                    <span class="colorInvalid">
+                        <i>Passwords doesnot match</i>
+                    </span>
+                </div>
+        </div>
+
         <div class="buttons">
             <button type="submit" [disabled]="registerForm.invalid" class="btn buttons__login">Register</button>
             <img *ngIf="dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
@@ -68,5 +133,10 @@
             <button type="button" class="btn buttons__register" [routerLink]="['/']">Cancelar</button>
         </div>
     </form>
+    <div class="input-group-append" *ngIf="unregistered">
+        <span class="colorInvalid">
+            <i>Unregistered user</i>
+        </span>
+    </div>
 </div>
 

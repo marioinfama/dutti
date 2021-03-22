@@ -14,7 +14,6 @@ export class UsersService {
   constructor(private http: HttpClient) { }
 
   registro( usuario: User ) {
-
     return new Promise( resolve => {
 
       this.http.post(`${ URL }/user/create`, usuario )
