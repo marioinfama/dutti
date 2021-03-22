@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 // JSON
 import usersList from 'src/assets/json/users.json';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private usersService: UsersService
   ) { }
 
   ngOnInit(): void {
@@ -29,13 +31,14 @@ export class LoginComponent implements OnInit {
       password: [ '', [Validators.required, Validators.minLength(6)]]
     })
   }
-  loginUser() {
+  async loginUser() {
     if (this.loginForm.invalid) { return }
-    // TODO : Falta integrar el servicio para autentificar al usuario
-    // JSON simulando usuarios
+    // Se integra el servicio login que consume un servicio rest que interactua con una bbdd mongodb
     var userLogin = this.loginForm.value.username;
-    var filterJson = this.users.filter(function (user) { return user.first_name === userLogin  });
-    if (filterJson.length > 0) {
+    var password = this.loginForm.value.password;
+
+    const valido = await this.usersService.login( userLogin, password);
+    if (valido) {
       this.router.navigate(['/principal/ships'])
     } else {
       this.unregistered = true;
