@@ -49,7 +49,9 @@ export class UsersService {
 
     await this.cargarToken();
 
-    if ( !this.token ) {
+    console.log("token: "+this.token);
+
+    if (!this.token) {
       return Promise.resolve(false);
     }
 

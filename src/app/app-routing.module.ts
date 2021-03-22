@@ -3,11 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 // Components
 import { LoginComponent } from './users/components/login/login.component';
 import { RegisterComponent } from './users/components/register/register.component';
+import { UsuarioGuard } from './guards/usuario.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'principal', loadChildren: () => import(`./pages/pages.module`).then(m => m.PagesModule) }
+  { path: 'principal', loadChildren: () => import(`./pages/pages.module`).then(m => m.PagesModule), canLoad: [ UsuarioGuard ] }
   // { path: 'ships', loadChildren: () => import(`./components/ships/ships.module`).then(m => m.ShipsModule) }
 ];
 

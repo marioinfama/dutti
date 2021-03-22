@@ -35,7 +35,7 @@ Navigate to `http://localhost:4200/`.
 
 # Notas del desarrollador:
 
-1 - Reestructuración
+1. Reestructuración
     Se reestructura el proyecto dividiendo en módulos users y pages optando por seguir la siguiente estructura:
     -app
     --module1
@@ -49,3 +49,10 @@ Navigate to `http://localhost:4200/`.
     ....
 
     El módulo principal se renombra a pages así como el routing.
+
+2. Se implementa el login/registro/logout consumiendo un servicio nodejs + express implementado para la ocasión y que está en el repositorio git https://github.com/marioinfama/duttiServer
+    Este servicio se conecta con una bbdd mongoDB creada en un cluster en la propia web de mongodb.
+    Tanto el login como el resgistrar generan un token de seguridad con JWT que es guardado en el localStorage para comprobar que puede acceder a las distintas páginas ya que está logueado.
+    En cuanto a la encriptación de la password se realiza con bcryptjs.
+
+3.
