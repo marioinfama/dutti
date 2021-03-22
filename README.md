@@ -35,4 +35,15 @@ Navigate to `http://localhost:4200/`.
 
 # Notas del desarrollador:
 
+1 - Reestructuración
+    Se reestructura el proyecto dividiendo en módulos users y pages optando por seguir la siguiente estructura:
+    -app
+    --module1
+    ---components
+    ---services
+    --module2
+    ---components
+    ---services
+    ....
 
+    El módulo principal se renombra a pages así como el routing.
