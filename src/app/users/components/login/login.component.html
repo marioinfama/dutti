@@ -9,7 +9,7 @@
                 placeholder="Username"
                 formControlName="username"/>
                 <hr class="hr-line">
-            <div class="input-group-append form__required" *ngIf="loginForm.get('username').invalid">
+            <div class="input-group-append form__required" *ngIf="registerFormControl.username.touched && registerFormControl.username.errors?.required">
                 <span class="colorInvalid">
                     <i>Username is required</i>
                 </span>
@@ -23,7 +23,7 @@
             placeholder="Password"
             formControlName="password"/>
             <hr class="hr-line">
-            <div class="input-group-append form__required" *ngIf="loginForm.get('password').invalid">
+            <div class="input-group-append form__required" *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.required">
                 <span class="colorInvalid">
                     <i>Password is required</i>
                 </span>

@@ -44,5 +44,9 @@ export class LoginComponent implements OnInit {
       this.unregistered = true;
     }
   }
+
+  get registerFormControl() {
+    return this.loginForm.controls;
+  }
 }
 
