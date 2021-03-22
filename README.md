@@ -41,9 +41,11 @@ Navigate to `http://localhost:4200/`.
     --module1
     ---components
     ---services
+    ---interfaces
     --module2
     ---components
     ---services
+    ---interfaces
     ....
 
     El módulo principal se renombra a pages así como el routing.
