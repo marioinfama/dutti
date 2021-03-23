@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: 'serverdutti.aupa.xyz'
+  url: 'server.goutu.es'
 };
