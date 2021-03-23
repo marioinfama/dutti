@@ -31,7 +31,8 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('return true si el usuario es autenticado', () => {
+    localStorage.setItem('token', 'asdfasdfasdfsadfsdfddd'); 
+    expect(component.loginUser()).toBeTruthy();
   });
 });

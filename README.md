@@ -55,4 +55,18 @@ Navigate to `http://localhost:4200/`.
     Tanto el login como el resgistrar generan un token de seguridad con JWT que es guardado en el localStorage para comprobar que puede acceder a las distintas páginas ya que está logueado.
     En cuanto a la encriptación de la password se realiza con bcryptjs.
 
-3.
+3. Se implementa el patrón redux para el componente ships y controlar la carga del listado
+
+4. Se puede implementar con el payload de redux, pero lo he realizado creando un nuevo método en el servicio y llamando dentro del subcomponente details. De la otra manera se puede hacer emmitiendo eventos del componente padre.
+
+7. En el caso de las aplicaciones angular para no saturar el servidor podemos mejorar el rendimiento de la misma... Esto se lleva a cabo con buenas prácticas de programación en este framework como por ejempo:
+    - Uso de lazy loading de modulos (implementado en esta aplicación en la última subida)
+    - Uso de canLoad en los routing (implementado en esta aplicación para controlar la vistas cuando no hay usuario login)
+    - Intentar usar lo menos posible las escuchas de angular (onChange, onAfterChange...), esto eleva el número de peticiones al servidor.
+    - Usar los get y set lo menos posible, y en su lugar usar _<nombre_variable> para devolever/cargar el valor de la misma.
+    - Controlar la carga de los componentes que dependen para mostrarse de alguna variable que se carga con método asincrono, de esta forma no se cargará varias veces (ejemplo implementado en el componente ships)
+    - No realizar operaciones costosas en la vista, para esto existen las pipes.
+    - Uso de memoria caché para cargas innecesarias
+    ...
+
+    Aparte de controlar el rendimiento de la aplicación desarrollada, a nivel de sistemas, una solución es motar un claster de servidores con réplicas de la aplicación en cada uno de ellos y balancear las peticiones dependiendo de la carga dentro de ese mismo cluster.

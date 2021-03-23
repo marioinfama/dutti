@@ -6,10 +6,9 @@ import { RegisterComponent } from './users/components/register/register.componen
 import { UsuarioGuard } from './guards/usuario.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
+  { path: '', loadChildren: './users/users.module#UsersModule'},
+  //{ path: 'register', component: RegisterComponent},
   { path: 'principal', loadChildren: () => import(`./pages/pages.module`).then(m => m.PagesModule), canLoad: [ UsuarioGuard ] }
-  // { path: 'ships', loadChildren: () => import(`./components/ships/ships.module`).then(m => m.ShipsModule) }
 ];
 
 @NgModule({

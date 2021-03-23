@@ -1,3 +1,4 @@
+import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -14,7 +15,6 @@ export class PrincipalComponent implements OnInit {
   }
 
   logout(){
-    console.log("ESTAENTRANDO");
     localStorage.removeItem('token');
     this.router.navigate(['/']);
   }

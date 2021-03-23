@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as Ships from './store/ships.actions';
 import { ShipsService } from 'src/app/pages/services/ships.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-ships',
