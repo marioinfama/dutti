@@ -4,7 +4,6 @@ import { ShipsComponent } from './components/ships/ships.component';
 import { PageOneComponent } from './components/page-one/page-one.component';
 import { PageTwoComponent } from './components/page-two/page-two.component';
 import { PrincipalComponent } from './components/principal/principal.component';
-import { UsuarioGuard } from '../guards/usuario.guard';
 
 const routes: Routes = [
   { path: '', component: PrincipalComponent,
