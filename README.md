@@ -59,7 +59,7 @@ Navigate to `http://localhost:4200/`.
 
 4. Se puede implementar con el payload de redux, pero lo he realizado creando un nuevo método en el servicio y llamando dentro del subcomponente details. De la otra manera se puede hacer emmitiendo eventos del componente padre.
 
-7. En el caso de las aplicaciones angular para no saturar el servidor podemos mejorar el rendimiento de la misma... Esto se lleva a cabo con buenas prácticas de programación en este framework como por ejempo:
+7. PUNTO 7 En el caso de las aplicaciones angular para no saturar el servidor podemos mejorar el rendimiento de la misma... Esto se lleva a cabo con buenas prácticas de programación en este framework como por ejempo:
     - Uso de lazy loading de modulos (implementado en esta aplicación en la última subida)
     - Uso de canLoad en los routing (implementado en esta aplicación para controlar la vistas cuando no hay usuario login)
     - Intentar usar lo menos posible las escuchas de angular (onChange, onAfterChange...), esto eleva el número de peticiones al servidor.
