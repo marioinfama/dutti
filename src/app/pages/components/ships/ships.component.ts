@@ -11,19 +11,17 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class ShipsComponent implements OnInit {
 
+  listLoader: Promise<boolean>;
+
   public dataList: any = [];
 
   constructor( private store: Store<any>, private shipsService: ShipsService) {}
 
   ngOnInit(): void {
-   /* this.shipsService.getShips().subscribe((ships) => {
-      this.dataList = ships;
-      console.log('SHIPS -->', this.dataList.results)
-    })*/
     this.store.dispatch(new Ships.GetShipsList());
     this.store.select('ships').subscribe(response => {
       this.dataList = response.shipsList;
-
+      this.listLoader = Promise.resolve(true);
     }, error => {
       console.log(error);
     });

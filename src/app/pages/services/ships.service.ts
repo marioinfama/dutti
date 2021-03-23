@@ -24,4 +24,10 @@ export class ShipsService {
       map( data => { return data })
       );
   }
+  getShipsByPage(numPage: number):Observable<any> {
+    var newUrl = this.url +'?page='+numPage;
+    return this.http.get(newUrl).pipe( 
+      map( data => { return data })
+      );
+  }
 }
